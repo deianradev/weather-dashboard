@@ -21,7 +21,7 @@ if (!fs.existsSync(directory)) {
 
 // Write environment file
 fs.writeFileSync(
-  `${directory}/environment.prod.ts`, 
+  `${directory}/environment.production.ts`, 
   environmentFileContent
 );
 
