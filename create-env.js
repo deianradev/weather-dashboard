@@ -7,8 +7,8 @@ const environmentVariables = process.env;
 const environmentFileContent = `
 export const environment = {
   production: true,
-  apiUrl: '${environmentVariables.API_URL || ""}',
-  apiKey: '${environmentVariables.API_KEY || ""}',
+  weatherApiKey: '${environmentVariables.API_KEY || ""}',
+  weatherApiBaseUrl: '${environmentVariables.API_URL || ""}',
   // Add all your other environment variables here
 };
 `;
