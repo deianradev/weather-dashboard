@@ -11,7 +11,12 @@ export class WeatherService {
   private apiKey = environment.weatherApiKey;
   private baseUrl = environment.weatherApiBaseUrl;
 
-  constructor(private http: HttpClient) {}
+  // In weather.service.ts constructor
+  constructor(private http: HttpClient) {
+    console.log('Weather service initialized with:');
+    console.log('API URL:', this.baseUrl);
+    console.log('API Key present:', !!this.apiKey);
+  }
 
   private handleError(error: HttpErrorResponse) {
     console.error('API Error:', error);

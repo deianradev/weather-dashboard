@@ -8,7 +8,7 @@ const environmentFileContent = `
 export const environment = {
   production: true,
   weatherApiKey: '${environmentVariables.API_KEY || ""}',
-  weatherApiBaseUrl: '${environmentVariables.API_URL || ""}',
+  weatherApiBaseUrl: '${environmentVariables.API_URL || "https://api.weatherapi.com/v1"}',
   // Add all your other environment variables here
 };
 `;
