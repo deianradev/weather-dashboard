@@ -28,7 +28,7 @@ export class WeatherService {
     }
     return throwError(() => errorMessage);
   }
-
+/*
   getWeatherByCity(city: string): Observable<any> {
     const encodedCity = encodeURIComponent(city);
     const url = `${this.baseUrl}/current.json?key=${this.apiKey}&q=${encodedCity}&aqi=no`;
@@ -49,6 +49,42 @@ export class WeatherService {
     
     return this.http.get(url).pipe(
       tap(response => console.log('Raw forecast response:', response)),
+      catchError(this.handleError)
+    );
+  }
+    */
+  getWeatherByCity(city: string): Observable<any> {
+    const encodedCity = encodeURIComponent(city);
+    // Use your Netlify function as a proxy
+    const url = `/.netlify/functions/weather-proxy`;
+    
+    // Send parameters to the proxy
+    const params = {
+      endpoint: '/current.json',
+      q: encodedCity,
+      aqi: 'no'
+    };
+    
+    return this.http.get(url, { params }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
+  getForecast(city: string): Observable<any> {
+    const encodedCity = encodeURIComponent(city);
+    // Use your Netlify function as a proxy
+    const url = `/.netlify/functions/weather-proxy`;
+    
+    // Send parameters to the proxy
+    const params = {
+      endpoint: '/forecast.json',
+      q: encodedCity,
+      days: '1',
+      aqi: 'no',
+      hour: '24'
+    };
+    
+    return this.http.get(url, { params }).pipe(
       catchError(this.handleError)
     );
   }
