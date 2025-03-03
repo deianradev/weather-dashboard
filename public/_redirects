@@ -1,0 +1,1 @@
+/api/*  https://api.weatherapi.com/v1/:splat  200

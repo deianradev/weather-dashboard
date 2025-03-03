@@ -9,7 +9,9 @@ import { environment } from '../../environments/environment';
 })
 export class WeatherService {
   private apiKey = environment.weatherApiKey;
-  private baseUrl = environment.weatherApiBaseUrl;
+  private baseUrl = '/api';
+//   private baseUrl = environment.weatherApiBaseUrl;
+
 
   // In weather.service.ts constructor
   constructor(private http: HttpClient) {
